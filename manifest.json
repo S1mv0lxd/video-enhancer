@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Video Enhancer — растяжение и плавность для любых плееров",
+  "version": "1.3.1",
+  "description": "Масштаб-растяжение без обрезки и плавность для всех видео-плееров: обычные video, Shadow DOM (open/closed), iframe.",
+  "permissions": ["storage"],
+  "icons": {
+    "16":  "icons/icon16.png",
+    "32":  "icons/icon32.png",
+    "48":  "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Video Enhancer",
+    "default_icon": {
+      "16":  "icons/icon16.png",
+      "32":  "icons/icon32.png",
+      "48":  "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["probe.js"],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": true
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": { "id": "video-enhancer@local" }
+  }
+}
